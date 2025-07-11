@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Legacy hooks for Site Verify module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\site_verify\Hook\SiteVerifyHelp;
+use Drupal\site_verify\Hook\SiteVerifyHooks;
+
+/**
+ * Implements hook_help().
+ */
+#[LegacyHook]
+function site_verify_help($route_name, RouteMatchInterface $route_match) {
+  // @todo Remove when minimum version is ^11.1 as it will be called directly.
+  return \Drupal::service(SiteVerifyHelp::class)
+    ->help($route_name, $route_match);
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+#[LegacyHook]
+function site_verify_page_attachments(array &$page) {
+  // @todo Remove when minimum version is ^11.1 as it will be called directly.
+  \Drupal::service(SiteVerifyHooks::class)->addVerifications($page);
+}

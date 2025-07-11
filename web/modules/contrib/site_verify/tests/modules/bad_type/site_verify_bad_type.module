@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Alter the "Add site verification" form to add a bad type.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\site_verify_bad_type\Hook\BadTypeHooks;
+
+/**
+ * Implements hook_form_alter().
+ */
+#[LegacyHook]
+function site_verify_bad_type_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // @todo Remove when minimum version is ^11.1 as it will be called directly.
+  \Drupal::service(BadTypeHooks::class)
+    ->formAlter($form, $form_state, $form_id);
+}

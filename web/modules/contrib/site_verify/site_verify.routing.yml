@@ -1,0 +1,3 @@
+# Dynamic routes
+route_callbacks:
+  - \Drupal\site_verify\Routing\SiteVerifyRoutes::routes

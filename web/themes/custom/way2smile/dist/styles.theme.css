@@ -1,0 +1,36 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.ct-basic-content blockquote p {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 992px) {
+  .ct-logo .ct-logo__image {
+    max-height: 9.5rem;
+    position: absolute;
+    z-index: 1;
+  }
+}
+.ct-footer__top__content-top2 img {
+  max-width: 100px;
+}
+
+.ct-header__content-top3 .ct-social-links {
+  float: right;
+}
+
+.block-local-tasks-block .ct-link-list--local-tasks {
+  padding: 2rem 0 2rem;
+}
+.block-local-tasks-block .ct-link-list--local-tasks.ct-theme-light {
+  background-color: var(--ct-color-light-background);
+}
+.block-local-tasks-block .ct-link-list--local-tasks.ct-theme-dark {
+  background-color: var(--ct-color-dark-background);
+}

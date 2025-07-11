@@ -1,0 +1,51 @@
+site_verify.site_verification.*:
+  type: config_entity
+  label: Site Verification
+  mapping:
+    id:
+      # @todo Find a machine name constraint as an entity with a clashing name
+      # will not show as a violation until a storage exception when saving.
+      type: machine_name
+      label: Machine name
+    label:
+      type: label
+      label: Name
+    status:
+      type: boolean
+      label: Status
+    description:
+      type: string
+      label: Admin note or description
+      constraints:
+        Regex:
+          # Forbid any kind of control character.
+          pattern: /([^\PC])/u
+          match: false
+          message: 'Description is not allowed to span multiple lines or contain control characters.'
+    type:
+      type: string
+      label: Type of Site Verification
+      constraints:
+        Choice:
+          - meta
+          - file
+    name:
+      type: string
+      label: File or meta tag name
+      constraints:
+        Length:
+          min: 1
+          max: 255
+        Regex:
+          # Forbid any kind of control character.
+          pattern: /([^\PC])/u
+          match: false
+          message: Name is not allowed to span multiple lines or contain control characters.
+        SiteVerifyUniqueFile: []
+    content:
+      # Disallow all control characters except for tabs (ASCII 9, 0x09) as well
+      # as carriage returns (ASCII 13, 0x0D) and line feeds (ASCII 10, 0x0A).
+      type: text
+      label: File or meta tag contents
+  constraints:
+    FullyValidatable: ~

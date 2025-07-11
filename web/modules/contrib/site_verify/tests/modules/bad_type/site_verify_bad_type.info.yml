@@ -1,0 +1,11 @@
+name: Site Verification Bad Type
+description: Alter the Add site verification form to include a bad type.
+type: module
+package: Testing
+dependencies:
+  - site_verify:site_verify
+
+# Information added by Drupal.org packaging script on 2025-04-23
+version: '3.0.0'
+project: 'site_verify'
+datestamp: 1745391450

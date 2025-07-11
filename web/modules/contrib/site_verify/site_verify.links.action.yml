@@ -1,0 +1,5 @@
+entity.site_verification.add_form:
+  route_name: entity.site_verification.add_form
+  title: Add site verification
+  appears_on:
+    - entity.site_verification.collection

@@ -1,0 +1,26 @@
+# cspell: project specific dictionary
+
+# Legacy Database/Entity identifier, plus plural version.
+svid
+svids
+
+# False positive spelling mistakes.
+googleb
+
+# Random strings from testing identified as spelling mistakes.
+Nbwa
+Ssfl
+WNGE
+Dication
+verif
+
+# English spelling vs American.
+customise
+
+# Author names
+afinnarn
+noreiko
+owenpm
+reynen
+sembrat
+tripp

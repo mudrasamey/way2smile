@@ -1,0 +1,8 @@
+administer site verify:
+  title: Administer site verification
+  description: User can view the list of all site verifications and manage metatag verifications.
+  restrict access: TRUE
+
+manage file based site verifications:
+  title: Manage file type site verifications
+  restrict access: TRUE

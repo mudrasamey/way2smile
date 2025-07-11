@@ -1,0 +1,23 @@
+services:
+
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  logger.channel.site_verify:
+    parent: logger.channel_base
+    arguments:
+      - 'site_verify'
+
+  # @todo Remove when minimum version is ^11.1, as it will then be automatic.
+  Drupal\site_verify\Hook\SiteVerifyHelp:
+    class: Drupal\site_verify\Hook\SiteVerifyHelp
+
+  # @todo Remove when minimum version is ^11.1, as it will then be automatic.
+  Drupal\site_verify\Hook\SiteVerifyHooks:
+    class: Drupal\site_verify\Hook\SiteVerifyHooks
+
+# All procedural hooks converted to OOP hooks.
+# @see https://www.drupal.org/node/3490771
+parameters:
+  site_verify.hooks_converted: true

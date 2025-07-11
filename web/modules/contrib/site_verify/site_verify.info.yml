@@ -1,0 +1,10 @@
+name: Site Verification
+description: Verifies ownership of a site for use with search engines.
+type: module
+core_version_requirement: ^10.3 || ^11
+configure: entity.site_verification.collection
+
+# Information added by Drupal.org packaging script on 2025-04-23
+version: '3.0.0'
+project: 'site_verify'
+datestamp: 1745391450

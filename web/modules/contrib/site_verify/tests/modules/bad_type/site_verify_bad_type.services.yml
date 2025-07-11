@@ -1,0 +1,9 @@
+services:
+
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  # @todo Remove when minimum version is ^11.1, as it will then be automatic.
+  Drupal\site_verify_bad_type\Hook\BadTypeHooks:
+    class: Drupal\site_verify_bad_type\Hook\BadTypeHooks

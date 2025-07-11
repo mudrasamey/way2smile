@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Update functions for the site_verify module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Move deprecated Yahoo verifications to Custom engine.
+ */
+function site_verify_update_10001() {
+  // Move instead of delete to avoid data loss.
+  $updated = \Drupal::database()->update('site_verify')
+    ->fields([
+      'engine' => 'custom',
+    ])
+    ->condition('engine', 'yahoo')
+    ->execute();
+
+  // Informational message only useful to those with obsolete verifications.
+  if ($updated) {
+    return new TranslatableMarkup(
+      'Moved @count Yahoo verifications to Custom. Yahoo verifications are deprecated. Review and delete as needed.', [
+        '@count' => $updated,
+      ]
+    );
+  }
+}
+
+/**
+ * Install SiteVerification ConfigEntityType.
+ */
+function site_verify_update_10300() {
+  \Drupal::entityDefinitionUpdateManager()->installEntityType(
+    \Drupal::entityTypeManager()->getDefinition('site_verification')
+  );
+
+  return new TranslatableMarkup('Site Verification config entity installed.');
+}
+
+/**
+ * Give new file permission to any roles with admin site verify permission.
+ */
+function site_verify_update_10301() {
+  // Load all of the roles to check permissions on.
+  $roles = \Drupal::entityTypeManager()
+    ->getStorage('user_role')
+    ->loadMultiple();
+
+  // Add file permission on any roles granted administer site verify.
+  $added = 0;
+  foreach ($roles as $role) {
+    $role_permissions = $role->getPermissions();
+    if (array_intersect($role_permissions, ['administer site verify'])) {
+      user_role_grant_permissions($role->id(), [
+        'manage file based site verifications',
+      ]);
+      $added++;
+    }
+  }
+
+  if ($added) {
+    return new TranslatableMarkup('Added file verifications to @num roles.', [
+      '@num' => $added,
+    ]);
+  }
+
+  return new TranslatableMarkup('No additional permissions granted.');
+}
