@@ -534,6 +534,15 @@
             ),
             'dev_requirement' => false,
         ),
+        'drupal/webp' => array(
+            'pretty_version' => '1.0.0-rc2',
+            'version' => '1.0.0.0-RC2',
+            'reference' => '8.x-1.0-rc2',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/webp',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/xmlsitemap' => array(
             'pretty_version' => '2.0.0',
             'version' => '2.0.0.0',

@@ -27,6 +27,7 @@
         "drupal/search_api_db": "^1.38",
         "drupal/site_verify": "^3.0",
         "drupal/webform": "6.3.0-beta2 as 6.2.9",
+        "drupal/webp": "^1.0@RC",
         "drupal/xmlsitemap": "^2.0"
     },
     "conflict": {
